@@ -46,19 +46,10 @@ class JSONPlaceholder:
             return None
 
 
-    def delete_user(self, userId, title, body,):
-        payload = {
-            "title": title,
-            "body": body,
-        }   
-        
-        response = requests.delete(f"{self.base_url}/{userId}", payload)
+    def delete_user(self, userId):
+        response = requests.delete(f"{self.base_url}/{userId}")
 
         if response.status_code == 200:
             return{
                 "status_code": response.status_code,
-                "headers": response.headers,
-                "content": response.content[:500],
             }
-        else:
-            return None
